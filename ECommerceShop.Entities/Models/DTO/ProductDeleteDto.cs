@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Entities.Models.DTO
 {
-    public class CategoryDeleteDto
+    public class ProductDeleteDto
     {
-        public int Id; 
+        public int Id;
     }
 }

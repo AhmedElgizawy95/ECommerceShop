@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Entities.Models.DTO
 {
-    public class CategoryDeleteDto
+    public class CategoryUpdateDto
     {
-        public int Id; 
+
+        public string Name;
+        public string Description;
+        public DateTime CreatedDate { get; set; }
     }
 }

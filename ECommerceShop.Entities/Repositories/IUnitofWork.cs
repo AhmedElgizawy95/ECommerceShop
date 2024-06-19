@@ -9,6 +9,7 @@ namespace ECommerceShop.Entities.Repositories
     public interface IUnitofWork:IDisposable
     {
         ICategoryRepository Category { get; }
+        IProductRepository Product { get; }
         int Complete();
     }
 }

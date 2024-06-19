@@ -106,11 +106,11 @@ namespace ECommerceShop.Controllers
 
         }
 
-        [HttpPut]
-        public IActionResult UpdateCategory(Category category)
+        [HttpPut("{id}")]
+        public IActionResult UpdateCategory(int id, CategoryUpdateDto category)
         {
 
-            var existingCategory = _unitofWork.Category.GetFirstOrDefault(x => x.Id == category.Id);
+            var existingCategory = _unitofWork.Category.GetFirstOrDefault(x => x.Id == id);
             existingCategory.Name = category.Name;
             existingCategory.Description = category.Description;
             existingCategory.CreatedDate = category.CreatedDate;
