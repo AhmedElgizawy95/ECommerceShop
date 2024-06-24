@@ -18,7 +18,7 @@ namespace ECommerceShop.DataAccess.Implementation
             _context = context;
         }
 
-        public void update(Product product)
+        public void Update(Product product)
         {
             var productInDb = _context.Products.FirstOrDefault(x => x.ProductId == product.ProductId);
             if (productInDb != null)

@@ -10,6 +10,7 @@ namespace ECommerceShop.Entities.Repositories
     {
         ICategoryRepository Category { get; }
         IProductRepository Product { get; }
+        IProductRepository Cart { get; }
         int Complete();
     }
 }

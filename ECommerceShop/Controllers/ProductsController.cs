@@ -101,13 +101,65 @@ namespace ECommerceShop.Controllers
         { 
 
             var existingProduct = _unitofWork.Product.GetFirstOrDefault(x => x.ProductId == id);
-            existingProduct.Name = product.Name;
-            existingProduct.Description = product.Description;
+            if(product.Name != null)
+            {
+                existingProduct.Name = product.Name;
+            }
+            else
+            {
+                existingProduct.Name = existingProduct.Name;
+            }
+
+            if (product.Description != "string")
+            {
+                existingProduct.Description = product.Description;
+            }
+            else
+            {
+                existingProduct.Description = existingProduct.Description;
+            }
+            //existingProduct.Description = product.Description;
+
+
+            if (product.Price != 0)
+            {
+                existingProduct.Price = product.Price;
+            }
+            else
+            {
+                existingProduct.Price = existingProduct.Price;
+            }
             existingProduct.CreatedDate = product.CreatedDate;
-            existingProduct.Price = product.Price;
-            existingProduct.Stock = product.Stock;
-            existingProduct.CategoryId = product.CategoryId;
-            existingProduct.ImageUrl = product.ImageUrl;
+            // existingProduct.Price = product.Price;
+            if (product.Stock != 0)
+            {
+                existingProduct.Stock = product.Stock;
+            }
+            else
+            {
+                existingProduct.Stock = existingProduct.Stock;
+            }
+            //existingProduct.Stock = product.Stock;
+
+            if (product.CategoryId != 0)
+            {
+                existingProduct.CategoryId = product.CategoryId;
+            }
+            else
+            {
+                existingProduct.CategoryId = existingProduct.CategoryId;
+            }
+            //existingProduct.CategoryId = product.CategoryId;
+
+            if (product.ImageUrl != "string")
+            {
+                existingProduct.ImageUrl = product.ImageUrl;
+            }
+            else
+            {
+                existingProduct.ImageUrl = existingProduct.ImageUrl;
+            }
+            //existingProduct.ImageUrl = product.ImageUrl;
 
 
             _unitofWork.Product.Update(existingProduct);

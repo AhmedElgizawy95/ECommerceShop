@@ -70,22 +70,6 @@ namespace ECommerceShop.Controllers
                 Description = category.Description
             }).ToList();
 
-
-
-/*            var recordsCategoryDtoList = new List<CategoryReadDto>();
-
-            foreach (var record in records)
-            {
-                recordsCategoryDtoList.Add(
-                    new CategoryReadDto
-                    {
-                        Name = record.Name,
-                        Description = record.Description,
-                        CreatedDate = record.CreatedDate
-                    }
-                );
-            }*/
-
             return Ok(categoryDtos);
 
         }
