@@ -57,7 +57,7 @@ namespace ECommerceShop.Controllers
 
         [HttpGet]
 
-        public async Task<ActionResult<IEnumerable<ProductReadDto>>> GetProduct()
+        public async Task<ActionResult<IEnumerable<ProductReadDto>>> GetProducts()
         {
 
             var products = await _unitofWork.Product.GetAllAsync();

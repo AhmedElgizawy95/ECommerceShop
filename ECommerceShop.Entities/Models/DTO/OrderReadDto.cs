@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Entities.Models.DTO
 {
-    internal class OrderReadDto
+    public class OrderReadDto
     {
+        public int OrderId { get; set; }
+        public int UserId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public ICollection<OrderItemReadDto> OrderItems { get; set; }
     }
 }

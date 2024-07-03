@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Entities.Models.DTO
 {
-    internal class OrderDeleteDto
+    public class OrderDeleteDto
     {
+        public int OrderId { get; set; }
     }
 }

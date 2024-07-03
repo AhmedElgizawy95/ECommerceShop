@@ -18,16 +18,9 @@ namespace ECommerceShop.Controllers
         }
 
         [HttpPost]
-        public  IActionResult Create([FromBody] CategoryCreateDto categoryDto) //Category category
+        public  IActionResult Create([FromBody] CategoryCreateDto categoryDto) 
         {
-            /*if (category == null)
-            {
-                return BadRequest("Category data is required.");
-            }
-            category.CreatedDate = DateTime.Now;
-            _unitofWork.Category.Add(category);
-            _unitofWork.Complete();
-            return Ok(category.Id);*/
+         
             if (categoryDto == null)
             {
                 return BadRequest("Category data is required.");

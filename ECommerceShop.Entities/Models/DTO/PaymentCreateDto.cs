@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.Entities.Models.DTO
 {
-    internal class PaymentCreateDto
+    public class PaymentCreateDto
     {
+        public int OrderId { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime PaymentDate { get; set; }
+        public string PaymentMethod { get; set; }
     }
 }

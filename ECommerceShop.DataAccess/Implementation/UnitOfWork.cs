@@ -17,7 +17,9 @@ namespace ECommerceShop.DataAccess.Implementation
 
         public ICartRepository Cart { get; private set; }
 
-        
+        public ICartItemRepository CartItem { get; private set; }
+        public IOrderRepository Order { get; private set; }
+        public IOrderItemRepository OrderItem { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -25,6 +27,9 @@ namespace ECommerceShop.DataAccess.Implementation
             Category = new CategoryRepository(context);
             Product = new ProductRepository(context);
             Cart = new CartRepository(context);
+            CartItem = new CartItemRepository(context);
+            Order = new OrderRepository(context);
+            OrderItem = new OrderItemRepository(context);
         }
 
         public int Complete()

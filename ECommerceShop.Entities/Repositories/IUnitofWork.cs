@@ -10,7 +10,10 @@ namespace ECommerceShop.Entities.Repositories
     {
         ICategoryRepository Category { get; }
         IProductRepository Product { get; }
-        IProductRepository Cart { get; }
+        ICartRepository Cart { get; }
+        ICartItemRepository CartItem { get; }
+        IOrderRepository Order { get; }
+        IOrderItemRepository OrderItem { get; }
         int Complete();
     }
 }
