@@ -7,7 +7,7 @@ namespace ECommerceShop.Entities.Models.Domain
         [Key]
         public int ReviewId { get; set; }
         public int ProductId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; } //UserID
         public int Rating { get; set; }
         public string? Comment { get; set; }
         public DateTime ReviewDate { get; set; }

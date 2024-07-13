@@ -9,7 +9,7 @@ namespace ECommerceShop.Entities.Models.DTO
     public class CartUpdateDto
     {
         public int CartId { get; set; }
-        public int UserId { get; set; }
+        public string Id { get; set; } //UserId
         public List<CartItemUpdateDto> CartItems { get; set; }
     }
 }

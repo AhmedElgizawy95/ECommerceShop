@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceShop.DataAccess.Implementation
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    /*public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly ApplicationDbContext _context;
         private DbSet<T> _dbSet;
@@ -122,5 +122,105 @@ namespace ECommerceShop.DataAccess.Implementation
         }
 
        
+    }*/
+
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly DbSet<T> _dbSet;
+
+        public GenericRepository(ApplicationDbContext context)
+        {
+            _context = context;
+            _dbSet = _context.Set<T>();
+        }
+
+        public void Add(T entity)
+        {
+            _dbSet.Add(entity);
+        }
+
+        public async Task AddAsync(T entity)
+        {
+            await _dbSet.AddAsync(entity);
+        }
+
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? predicate = null, string? includeProperties = null)
+        {
+            IQueryable<T> query = _dbSet;
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            return query.ToList();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null, string? includeProperties = null)
+        {
+            IQueryable<T> query = _dbSet;
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            return await query.ToListAsync();
+        }
+
+        public T GetFirstOrDefault(Expression<Func<T, bool>>? predicate = null, string? includeProperties = null)
+        {
+            IQueryable<T> query = _dbSet;
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            return query.SingleOrDefault();
+        }
+
+        public async Task<T> GetFirstOrDefaultAsync(Expression<Func<T, bool>>? predicate = null, string? includeProperties = null)
+        {
+            IQueryable<T> query = _dbSet;
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            return await query.SingleOrDefaultAsync();
+        }
+
+        public void Remove(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
+        public void RemoveRange(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
+        }
     }
 }

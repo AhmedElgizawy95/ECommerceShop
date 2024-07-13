@@ -30,14 +30,14 @@ namespace ECommerceShop.Controllers
             {
                 var cart = new Cart
                 {
-                    UserId = cartDto.UserId
+                    UserId = cartDto.Id
 
                 };
 
                 _unitofWork.Cart.Add(cart);
                 _unitofWork.Complete();
 
-                return Ok(cartDto.UserId);
+                return Ok(cartDto.Id);
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace ECommerceShop.Controllers
             var cartDto = new CartReadDto
             {
                 CartId = cart.CartId,
-                UserId = cart.UserId,
+                Id = cart.UserId,
                 CartItems = cart.CartItems.Select(ci => new CartItemReadDto
                 {
                     CartItemId = ci.CartItemId,
@@ -80,7 +80,7 @@ namespace ECommerceShop.Controllers
             var cartDtos = carts.Select(cart => new CartReadDto
             {
                 CartId = cart.CartId,
-                UserId = cart.UserId,
+                Id = cart.UserId,
                 CartItems = cart.CartItems.Select(ci => new CartItemReadDto
                 {
                     CartItemId = ci.CartItemId,
@@ -107,7 +107,7 @@ namespace ECommerceShop.Controllers
                 return NotFound("Cart not found.");
             }
 
-            existingCart.UserId = cart.UserId;
+            existingCart.UserId = cart.Id;
 
             // Update or add cart items
             foreach (var itemDto in cart.CartItems)

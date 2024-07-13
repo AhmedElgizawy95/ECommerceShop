@@ -8,7 +8,7 @@ namespace ECommerceShop.Entities.Models.DTO
 {
     public class OrderCreateDto
     {
-        public int UserId { get; set; }
+        public string Id { get; set; }
         public DateTime OrderDate { get; set; }
         public string? OrderStatus { get; set; }
         public string? ShippingAddress { get; set; }

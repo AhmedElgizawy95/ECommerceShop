@@ -14,6 +14,8 @@ namespace ECommerceShop.Entities.Repositories
         ICartItemRepository CartItem { get; }
         IOrderRepository Order { get; }
         IOrderItemRepository OrderItem { get; }
+
+        IUserRepository User { get; }
         int Complete();
     }
 }

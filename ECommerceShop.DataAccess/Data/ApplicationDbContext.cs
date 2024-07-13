@@ -1,10 +1,11 @@
 ﻿/*using ECommerce.Entities.Models.Domain;
 using Microsoft.EntityFrameworkCore;*/
 using ECommerceShop.Entities.Models.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 namespace ECommerceShop.DataAccess.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext: IdentityDbContext<User>//DbContext  
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -18,7 +19,9 @@ namespace ECommerceShop.DataAccess.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<User> Users { get; set; }
+        
+        
+        //public DbSet<User> Users { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -75,7 +78,7 @@ namespace ECommerceShop.DataAccess.Data
 
 
             // Seed data
-            modelBuilder.Entity<User>().HasData(
+/*            modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, Username = "Alice" },
                 new User { UserId = 2, Username = "Bob" }
             );
@@ -116,7 +119,7 @@ namespace ECommerceShop.DataAccess.Data
             modelBuilder.Entity<Payment>().HasData(
                 new Payment { PaymentId = 1, OrderId = 1, PaymentDate = DateTime.Now, Amount = 1019.98M, PaymentMethod = "Credit Card", PaymentStatus = "Paid" }
             );
-
+*/
 
             base.OnModelCreating(modelBuilder);
 

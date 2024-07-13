@@ -39,7 +39,7 @@ namespace ECommerceShop.Controllers
 
                 var order = new Order
                 {
-                    UserId = orderDto.UserId,
+                    UserId = orderDto.Id,
                     OrderDate = orderDto.OrderDate,
                     OrderStatus = orderDto.OrderStatus,
                     ShippingAddress = orderDto.ShippingAddress,
@@ -72,7 +72,7 @@ namespace ECommerceShop.Controllers
             var orderDto = new OrderReadDto
             {
                 OrderId = order.OrderId,
-                UserId = order.UserId,
+                Id = order.UserId,
                 OrderDate = order.OrderDate,
                 OrderItems = order.OrderItems.Select(item => new OrderItemReadDto
                 {
@@ -100,7 +100,7 @@ namespace ECommerceShop.Controllers
                 return NotFound("Order not found.");
             }
 
-            existingOrder.UserId = orderDto.UserId;
+            existingOrder.UserId = orderDto.Id;
             existingOrder.OrderDate = orderDto.OrderDate;
 
             // Update or add order items

@@ -21,7 +21,7 @@ namespace ECommerceShop.Entities.Repositories
 
         //void AddListAsync(IEnumerable<T> entities);
 
-        void AddAsync(T entity);
+        Task AddAsync(T entity);
 
         void Remove(T entity);
 
