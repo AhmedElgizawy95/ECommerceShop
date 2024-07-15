@@ -33,7 +33,26 @@ namespace ECommerceShop.Controllers
                 //await _unitOfWork.CompleteAsync();
                 return Ok(new { Message = "User registered successfully" });
             }
-            return Ok();
+            return BadRequest();
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> LogIn (LoginDto login)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = await _unitofWork.User.FindByEmailAsync(login.userEmail);
+                if(user != null)
+                {
+                    if( await _unitofWork.User.CheckPasswordAsync(user, login.password))
+                    {
+                        var token = _unitofWork.User.GenerateJwtToken(user);
+                        return Ok(new { Token = token });
+                    }
+                }
+            }
+
+            return BadRequest();
         }
     }
 }

@@ -2,6 +2,7 @@
 using ECommerceShop.Entities.Models.Domain;
 using ECommerceShop.Entities.Repositories;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace ECommerceShop.DataAccess.Implementation
 
         public IUserRepository User { get; private set; }
 
-        public UnitOfWork(ApplicationDbContext context, UserManager<User> userManager)
+        public UnitOfWork(ApplicationDbContext context, UserManager<User> userManager,IConfiguration configuration)
         {
             _context = context;
             Category = new CategoryRepository(context);
@@ -34,7 +35,7 @@ namespace ECommerceShop.DataAccess.Implementation
             CartItem = new CartItemRepository(context);
             Order = new OrderRepository(context);
             OrderItem = new OrderItemRepository(context);
-            User = new UserRepository(_context, userManager);
+            User = new UserRepository(_context, userManager ,configuration);
         }
 
         public int Complete()

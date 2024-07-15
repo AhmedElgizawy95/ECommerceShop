@@ -27,7 +27,7 @@ namespace ECommerceShop
             //builder.Services.AddDbContext<ApplicationDbContext>(options=> options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+       /*     builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -38,9 +38,9 @@ namespace ECommerceShop
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = "Issuer",
                     ValidAudience = "Audience",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("yourSecretKey"))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("SecretKey"))
                 };
-            });
+            });*/
             builder.Services.AddScoped<IUnitofWork,UnitOfWork>();
             var app = builder.Build();
 
